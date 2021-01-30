@@ -1,0 +1,16 @@
+[
+{
+  "modid": "autoloadlastworld",
+  "name": "Auto load last world",
+  "description": "Auto load last world",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Epix Zhang"],
+  "credits": "The Forge and FML guys, for making this example",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
