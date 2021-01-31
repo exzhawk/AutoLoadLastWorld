@@ -2,6 +2,7 @@ package me.exz.autoloadlastworld;
 
 import net.minecraft.client.AnvilConverterException;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiMainMenu;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.world.storage.WorldSummary;
@@ -24,17 +25,18 @@ public class AutoLoadLastWorld {
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void openGui(GuiOpenEvent event) {
         if (event.getGui() instanceof GuiMainMenu) {
-            if (!GuiScreen.isShiftKeyDown()) {
-                try {
-                    Minecraft minecraft = Minecraft.getMinecraft();
-                    List<WorldSummary> worldSummaryList = minecraft.getSaveLoader().getSaveList();
-                    if (worldSummaryList.size() > 0) {
-                        WorldSummary firstWorldSummary = worldSummaryList.get(0);
-                        minecraft.launchIntegratedServer(firstWorldSummary.getFileName(), firstWorldSummary.getDisplayName(), null);
-                    }
-                } catch (AnvilConverterException e) {
-                    e.printStackTrace();
+            if (GuiScreen.isShiftKeyDown() || GuiScreen.isAltKeyDown() || GuiScreen.isCtrlKeyDown()) {
+                return;
+            }
+            try {
+                Minecraft minecraft = Minecraft.getMinecraft();
+                List<WorldSummary> worldSummaryList = minecraft.getSaveLoader().getSaveList();
+                if (worldSummaryList.size() > 0) {
+                    WorldSummary firstWorldSummary = worldSummaryList.get(0);
+                    minecraft.launchIntegratedServer(firstWorldSummary.getFileName(), firstWorldSummary.getDisplayName(), null);
                 }
+            } catch (AnvilConverterException e) {
+                e.printStackTrace();
             }
         }
     }
