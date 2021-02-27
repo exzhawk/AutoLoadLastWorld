@@ -1,7 +1,8 @@
 # AutoLoadLastWorld
-Make Minecraft auto load last world without any touch. Hold one of shift/alt/ctrl key to prevent loading, when access the main menu (The GUI with MINECRAFT title, Singleplayer, Multiplayer, Quit Game buttons).
+Make Minecraft automatically load last world without any touch. Hold one of shift/alt/ctrl key to prevent loading, when access the main menu (The GUI with MINECRAFT title, Singleplayer, Multiplayer, Quit Game buttons).
 
 
+By default, it will only automatically load last world at the first time (just after launching the game). After quit to title, it won't load last world anymore. You can change this behavior in config file.
 
 The mechanic of this mod: Whenever the game is going to show the main menu (The GUI with MINECRAFT title, Singleplayer, Multiplayer, Quit Game buttons), load last world immediately if shift/alt/ctrl keys are not pressed.
 
@@ -13,4 +14,4 @@ This is originally for making another mod, when I found it's annoy to run client
 
 
 
-Might be helpful for the player who needs to load one world frequently.
+Might be helpful for the player who needs to re-launch the game or re-load one world frequently.
