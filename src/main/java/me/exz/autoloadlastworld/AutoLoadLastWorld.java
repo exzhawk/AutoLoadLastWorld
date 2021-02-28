@@ -13,6 +13,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
+import java.util.Collections;
 import java.util.List;
 
 @Mod(modid = AutoLoadLastWorld.MODID, name = AutoLoadLastWorld.NAME, version = AutoLoadLastWorld.VERSION)
@@ -41,8 +42,9 @@ public class AutoLoadLastWorld {
                 Minecraft minecraft = Minecraft.getMinecraft();
                 List<WorldSummary> worldSummaryList = minecraft.getSaveLoader().getSaveList();
                 if (worldSummaryList.size() > 0) {
-                    WorldSummary firstWorldSummary = worldSummaryList.get(0);
-                    minecraft.launchIntegratedServer(firstWorldSummary.getFileName(), firstWorldSummary.getDisplayName(), null);
+                    Collections.sort(worldSummaryList);
+                    WorldSummary lastWorldSummary = worldSummaryList.get(0);
+                    minecraft.launchIntegratedServer(lastWorldSummary.getFileName(), lastWorldSummary.getDisplayName(), null);
                 }
             } catch (AnvilConverterException e) {
                 e.printStackTrace();
